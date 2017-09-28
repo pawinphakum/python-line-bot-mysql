@@ -78,8 +78,8 @@ def handle_message(event):
                         TextSendMessage(text='insert...OK'))
 
 
-    queryString = (q)
-    c.execute('SELECT answer FROM chat WHERE question LIKE %'+'%s'+'%', queryString)
+    queryString = ('%'+q+'%')
+    c.execute('SELECT answer FROM chat WHERE question LIKE %s', queryString)
     a = c.fetchall()
     if a:
         print(a)
