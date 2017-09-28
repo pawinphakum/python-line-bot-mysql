@@ -83,10 +83,11 @@ def handle_message(event):
     a = c.fetchall()
     if a:
         print(a)
+        randRow = random.choice(a)
+        print(randRow[0])
         line_bot_api.reply_message(
             event.reply_token,
             # TextSendMessage(text=a[0]))
-            randRow = random.choice(a)
             TextSendMessage(text=randRow[0]))
     else:
         if queryString.find('อับดุล') > -1:
