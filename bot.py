@@ -10,7 +10,7 @@ mysql = MySQL()
 app = Flask(__name__)
 
 # MySQL configurations
-app.config['MYSQL_DATABASE_HOST'] = 'sql12.freemysqlhosting.net'
+app.config['MYSQL_DATABASE_HOST'] = ''
 app.config['MYSQL_DATABASE_PORT'] = 3306
 app.config['MYSQL_DATABASE_USER'] = ''
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
