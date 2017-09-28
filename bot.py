@@ -86,7 +86,8 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             # TextSendMessage(text=a[0]))
-            TextSendMessage(text='พักก่อน'))
+            randRow = random.choice(a)
+            TextSendMessage(text=randRow[0]))
     else:
         if queryString.find('อับดุล') > -1:
             foo = ['เรียกผมเหรอครับ', 'วาจังดายย', 'อะไรวะ', 'เรียกอยู่ได้', 'ถาหาขาไพ?่', 'Zzzz', 'ครับครับ', 'ย๊างหมอ']
