@@ -4,17 +4,18 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import sqlite3
 import random
+import os
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
 app = Flask(__name__)
 
 # MySQL configurations
-app.config['MYSQL_DATABASE_HOST'] = ''
+app.config['MYSQL_DATABASE_HOST'] = os.environ.get('DB_HOST')
 app.config['MYSQL_DATABASE_PORT'] = 3306
-app.config['MYSQL_DATABASE_USER'] = ''
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = ''
+app.config['MYSQL_DATABASE_USER'] = os.environ.get('DB_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.environ.get('DB_PASSWORD')
+app.config['MYSQL_DATABASE_DB'] = os.environ.get('DB_SCHEMA')
 mysql.init_app(app)
 
 line_bot_api = LineBotApi('CEVP2r/YR77YziQNKaJWiynlA5iABxA2/vy5/O2IFLZCkO6hwW1kaoPQP2HCbENKmn/N5Xv3LqwgLn3wlyWEsHzdsi83xJjB/vH7/Y7VM9BLVs6AykBq2/OhOScCkHyBEdaC39SJnVdU+daEzzQgrQdB04t89/1O/w1cDnyilFU=')
