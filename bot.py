@@ -79,13 +79,14 @@ def handle_message(event):
 
 
     queryString = (q)
-    c.execute('SELECT answer FROM chat WHERE question = %s', queryString)
-    a = c.fetchone()
+    c.execute('SELECT answer FROM chat WHERE question LIKE %'+'%s'+'%', queryString)
+    a = c.fetchall()
     if a:
-        print(a[0])
+        print(a)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=a[0]))
+            # TextSendMessage(text=a[0]))
+            TextSendMessage(text='พักก่อน'))
     else:
         if queryString.find('อับดุล') > -1:
             foo = ['เรียกผมเหรอครับ', 'วาจังดายย', 'อะไรวะ', 'เรียกอยู่ได้', 'ถาหาขาไพ?่', 'Zzzz', 'ครับครับ', 'ย๊างหมอ']
