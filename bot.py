@@ -18,8 +18,11 @@ app.config['MYSQL_DATABASE_PASSWORD'] = os.environ.get('DB_PASSWORD')
 app.config['MYSQL_DATABASE_DB'] = os.environ.get('DB_SCHEMA')
 mysql.init_app(app)
 
-line_bot_api = LineBotApi('CEVP2r/YR77YziQNKaJWiynlA5iABxA2/vy5/O2IFLZCkO6hwW1kaoPQP2HCbENKmn/N5Xv3LqwgLn3wlyWEsHzdsi83xJjB/vH7/Y7VM9BLVs6AykBq2/OhOScCkHyBEdaC39SJnVdU+daEzzQgrQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('2a1d3c17a4ef843a5d06ec04073a2776')
+CHANNEL_ACCESS_TOKEN = os.environ.get('CHANNEL_ACCESS_TOKEN')
+CHANNEL_SECRET = os.environ.get('CHANNEL_SECRET')
+
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(CHANNEL_SECRET)
 
 @app.route('/')
 def hello():
