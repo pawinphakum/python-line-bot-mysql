@@ -44,7 +44,6 @@ def webhook():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # conn = sqlite3.connect('chat.db')
     conn = mysql.connect()
     c = conn.cursor()
 
