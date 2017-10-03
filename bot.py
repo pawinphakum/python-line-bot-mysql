@@ -4,6 +4,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import random
 import os
+import goslate
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -78,6 +79,14 @@ def handle_message(event):
                         event.reply_token,
                         TextSendMessage(text='insert...OK'))
 
+    else if q.startswith('('):
+        gs = goslate.Goslate()
+        inputWord = q[1:]
+        transWord = gs.translate(inputWord, 'en')
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=transWord))
+
 
     queryString = ('%'+q+'%')
     c.execute('SELECT answer FROM chat WHERE question LIKE %s', queryString)
@@ -92,7 +101,7 @@ def handle_message(event):
             TextSendMessage(text=randRow[0]))
     else:
         if queryString.find('อับดุล') > -1:
-            foo = ['เรียกผมเหรอครับ', 'วาจังดายย', 'อะไรวะ', 'เรียกอยู่ได้', 'ถาหาขาไพ?่', 'Zzzz', 'ครับครับ', 'ย๊างหมอ']
+            foo = ['เรียกผมเหรอครับ', 'วาจังดายย', 'อะไรวะ', 'เรียกอยู่ได้', 'ถาหาขาไพ่?', 'Zzzz', 'ครับครับ', 'ย๊างหมอ']
             randAns = random.choice(foo)
             # print(randAns)
             line_bot_api.reply_message(
