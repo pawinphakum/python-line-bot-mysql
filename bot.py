@@ -79,7 +79,7 @@ def handle_message(event):
                         event.reply_token,
                         TextSendMessage(text='insert...OK'))
 
-    else if q.startswith('('):
+    elif q.startswith('('):
         gs = goslate.Goslate()
         inputWord = q[1:]
         transWord = gs.translate(inputWord, 'en')
