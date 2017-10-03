@@ -4,8 +4,7 @@ click==6.7
 Flask==0.12.2
 Flask-MySQL==1.4.0
 future==0.16.0
-futures==3.1.1
-goslate==1.5.1
+googletrans==2.2.0
 gunicorn==19.7.1
 idna==2.6
 itsdangerous==0.24

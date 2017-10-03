@@ -4,7 +4,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import random
 import os
-import goslate
+from googletrans import Translator
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -80,12 +80,15 @@ def handle_message(event):
                         TextSendMessage(text='insert...OK'))
 
     elif q.startswith('('):
-        gs = goslate.Goslate()
         inputWord = q[1:]
-        transWord = gs.translate(inputWord, 'en')
+        translator = Translator()
+        w = translator.translate(inputWord, dest='en')
+        #print(translator.translate('안녕하세요.', dest='ja'))
+        #w = translator.translate('안녕하세요.', dest='ja')
+        #print(w.pronunciation)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=transWord))
+            TextSendMessage(text=w.pronunciation))
 
 
     queryString = ('%'+q+'%')
