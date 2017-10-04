@@ -82,13 +82,11 @@ def handle_message(event):
     elif q.startswith('('):
         inputWord = q[1:]
         translator = Translator()
-        w = translator.translate(inputWord, dest='en')
-        #print(translator.translate('안녕하세요.', dest='ja'))
-        #w = translator.translate('안녕하세요.', dest='ja')
-        #print(w.pronunciation)
+        tsl = translator.translate(inputWord, src='th')
+        print(tsl.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=w.pronunciation))
+            TextSendMessage(text=tsl.text))
 
 
     queryString = ('%'+q+'%')
